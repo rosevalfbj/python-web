@@ -5,6 +5,11 @@ pipeline {
     }
     stages {
         stage('Build'){
+            agent {
+                docker{
+                    image 'docker/dockerfile:1.17.1'
+                }
+            }
             steps {
                 sh(docker build -t flask-app .)
                 sh(docker tag flask-app sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest)
