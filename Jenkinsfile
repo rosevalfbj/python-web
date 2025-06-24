@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker{
-            image 'docker/dockerfile:1.17.1'
+            image 'docker:latest'
         }
     }
     environment {
@@ -10,14 +10,14 @@ pipeline {
     stages {
         stage('Build'){
             steps {
-                sh(docker build -t flask-app .)
-                sh(docker tag flask-app sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest)
+                sh "docker build -t flask-app ."
+                sh "docker tag flask-app sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
             }
         }
         stage('Push'){
             steps {
-                sh(docker login sa-saopaulo-1.ocir.io -u ${CREDS_USR} -p ${CRED_PSW})
-                sh(docker push sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest)
+                sh "docker login sa-saopaulo-1.ocir.io -u ${CREDS_USR} -p ${CRED_PSW}"
+                sh "docker push sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
             }
         }
     }
