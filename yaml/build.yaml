@@ -29,7 +29,4 @@ spec:
           memory: 256Mi
         limits:
           cpu: 4000m
-          memory: 2048Mi
-      volumeMounts:
-      - mountPath: /var/run/docker.sock
-        name: docker-sock      
+          memory: 2048Mi     
