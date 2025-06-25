@@ -17,12 +17,12 @@ spec:
           memory: 1024Mi
       securityContext:
         runAsUser: 0
-    - name: docker
-      image: docker:latest
+    - name: podman
+      image: quay.io/podman/stable
       tty: true
       env:
         - name: CONTAINER_ENV_VAR
-          value: docker
+          value: podman
       resources:
         requests:
           cpu: 100m

@@ -6,9 +6,9 @@ pipeline {
     stages {
         stage('Build'){
             agent {
-                docker {
-                    image 'quay.io/podman/stable'
-                    args '-v /var/lib/containers:/var/lib/containers'
+                kubernetes {
+                    yamlFile './yaml/build.yaml'
+                    defaultContainer 'jnlp'
                 }
             }
             steps {
