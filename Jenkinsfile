@@ -6,8 +6,9 @@ pipeline {
     stages {
         stage('Build'){
             agent {
-                docker {
-                    image 'docker:latest'
+                kubernetes {
+                    yamlFile './yaml/build.yaml'
+                    defaultContainer 'jnlp'
                 }
             }
             steps {
