@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    environment {
-        CREDS = credentials('jenkins-bitbucket-id')
-    }
+    //environment {
+    //    CREDS = credentials('jenkins-bitbucket-id')
+    //}
     stages {
         stage('Build'){
             agent {
