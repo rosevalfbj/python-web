@@ -6,14 +6,14 @@ pipeline {
     stages {
         stage('Build'){
             agent {
-                kubernetes {
-                    yamlFile './yaml/build.yaml'
-                    defaultContainer 'jnlp'
+                docker {
+                    image 'quay.io/podman/stable'
+                    args '-v /var/lib/containers:/var/lib/containers'
                 }
             }
             steps {
-                sh "docker build -t flask-app ."
-                sh "docker tag flask-app sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
+                sh "podman build -t flask-app ."
+                sh "podman tag flask-app sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
             }
         }
         stage('Push'){
