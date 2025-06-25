@@ -12,7 +12,7 @@ pipeline {
                 }
             }
             steps {
-                sh "podman build -t flask-app sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest ."
+                sh "podman build -t sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest ."
                 //sh "podman tag flask-app sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
             }
         }
