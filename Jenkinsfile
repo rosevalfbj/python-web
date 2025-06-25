@@ -8,7 +8,7 @@ pipeline {
             agent {
                 kubernetes {
                     yamlFile './yaml/build.yaml'
-                    defaultContainer 'jnlp'
+                    defaultContainer 'podman'
                 }
             }
             steps {
@@ -24,8 +24,8 @@ pipeline {
                 }
             }
             steps {
-                sh "docker login sa-saopaulo-1.ocir.io -u ${CREDS_USR} -p ${CRED_PSW}"
-                sh "docker push sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
+                sh "podman login sa-saopaulo-1.ocir.io -u ${CREDS_USR} -p ${CRED_PSW}"
+                sh "podman push sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
             }
         }
     }
