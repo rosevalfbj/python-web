@@ -12,8 +12,8 @@ pipeline {
                 }
             }
             steps {
-                sh "podman build -t flask-app ."
-                sh "podman tag flask-app sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
+                sh "podman build -t flask-app sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest ."
+                //sh "podman tag flask-app sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
             }
         }
         stage('Push'){
@@ -24,9 +24,9 @@ pipeline {
                 }
             }
             steps {
-                //sh "podman login sa-saopaulo-1.ocir.io -u ${CREDS_USR} -p ${CRED_PSW}"
-                //sh "podman push sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
                 sh "podman images"
+                sh "podman login sa-saopaulo-1.ocir.io -u ${CREDS_USR} -p ${CRED_PSW}"
+                sh "podman push sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
             }
         }
     }
