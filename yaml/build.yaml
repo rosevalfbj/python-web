@@ -1,0 +1,32 @@
+metadata:
+  labels:
+    agent: docker-image-builder
+spec:
+  containers:
+    - name: jnlp
+      image: jenkins/inbound-agent
+      env:
+        - name: CONTAINER_ENV_VAR
+          value: jnlp
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 4000m
+          memory: 1024Mi
+      securityContext:
+        runAsUser: 0
+    - name: docker
+      image: docker/dockerfile
+      tty: true
+      env:
+        - name: CONTAINER_ENV_VAR
+          value: maven
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 4000m
+          memory: 2048Mi
