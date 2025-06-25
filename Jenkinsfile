@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    //environment {
-    //    CREDS = credentials('jenkins-bitbucket-id')
-    //}
+    environment {
+        CREDS = credentials('jenkins-id')
+    }
     stages {
         stage('Build'){
             agent {
@@ -20,12 +20,13 @@ pipeline {
             agent {
                 kubernetes {
                     yamlFile './yaml/build.yaml'
-                    defaultContainer 'jnlp'
+                    defaultContainer 'podman'
                 }
             }
             steps {
-                sh "podman login sa-saopaulo-1.ocir.io -u ${CREDS_USR} -p ${CRED_PSW}"
-                sh "podman push sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
+                //sh "podman login sa-saopaulo-1.ocir.io -u ${CREDS_USR} -p ${CRED_PSW}"
+                //sh "podman push sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
+                sh "podman images"
             }
         }
     }
