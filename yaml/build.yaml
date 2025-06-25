@@ -31,4 +31,11 @@ spec:
           cpu: 4000m
           memory: 2048Mi
       securityContext:
-        runAsUser: 0     
+        privileged: true
+      volumeMounts:
+        - name: containers-volume
+          mountPath: /var/lib/containers
+  volumes:
+    - name: containers-volume
+      persistentVolumeClaim:
+        claimName: containers-pvc
