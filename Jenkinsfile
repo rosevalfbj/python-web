@@ -12,7 +12,7 @@ pipeline {
                 }
             }
             steps {
-                sh "podman build -t sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest ."
+                //sh "podman build -t sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest ."
                 //sh "podman tag flask-app sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
             }
         }
@@ -25,8 +25,8 @@ pipeline {
             }
             steps {
                 sh "podman images"
-                sh "podman login sa-saopaulo-1.ocir.io -u ${CREDS_USR} -p ${CREDS_PSW}"
-                sh "podman push sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
+                //sh "podman login sa-saopaulo-1.ocir.io -u ${CREDS_USR} -p ${CREDS_PSW}"
+                //sh "podman push sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
                 //sh "podman rmi ee9f3f545014 a68594786b83 005e394db478"
             }
         }
