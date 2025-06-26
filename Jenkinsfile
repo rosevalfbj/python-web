@@ -12,8 +12,8 @@ pipeline {
                 }
             }
             steps {
-                sh "podman rmi 3f11158a9006 3f2df597234e 42715f49b5d3"
-                //sh "podman build -t sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest ."
+                //sh "podman rmi 3f11158a9006 3f2df597234e 42715f49b5d3"
+                sh "podman build -t sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest ."
                 //sh "podman tag flask-app sa-saopaulo-1.ocir.io/grdf8a1tnmjn/flask-app:latest"
             }
         }
